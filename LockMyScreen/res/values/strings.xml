@@ -1,0 +1,13 @@
+<resources>
+
+    <string name="app_name">Lock Screen</string>
+    <string name="app_description">Lock your screen without using the power button.</string>
+    <string name="request_permission_title">This app requires permissions</string>
+    <string name="request_permission_message">Without the permission to lock your screen, I\'m pretty useless. You
+    wouldn\'t want this app to be useless, would you?</string>
+    <string name="request_permission_explanation">    Remember that you can only uninstall this app after you disabled the device administrator permission.</string>
+    <string name="on_permission_disabled">The application can now be uninstalled.</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="title_activity_configurations">Configurations</string>
+</resources>
