@@ -36,7 +36,8 @@
         </activity>
         <activity
             android:name="my.com.lockscreen.ShortcutActivity"
-            android:launchMode="singleInstance" >
+            android:launchMode="singleInstance" 
+            android:theme="@android:style/Animation.Dialog">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" >
                     <category android:name="android.intent.category.LAUNCHER" />

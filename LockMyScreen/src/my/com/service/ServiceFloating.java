@@ -53,13 +53,13 @@ public class ServiceFloating extends Service {
 	long lastPressTime;
 	private Boolean _enable = true;
 	private Boolean flag_long_click = false;
+	private Boolean up_action_flag = false;
 	ArrayList<String> myArray;
 	ArrayList<PInfo> apps;
 	//List listCity;
 
 	@Override
 	public IBinder onBind(Intent intent) {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
@@ -118,24 +118,43 @@ public class ServiceFloating extends Service {
 				private int initialY;
 				private float initialTouchX;
 				private float initialTouchY;
+				private DevicePolicyManager policyManager;
+				private ComponentName adminComponent;
 
 				@Override public boolean onTouch(View v, MotionEvent event) {
 					switch (event.getAction()) {
 					case MotionEvent.ACTION_DOWN:
 						_enable = false;
+						//flag_long_click = false;
 						// Get current time in nano seconds.
 						long pressTime = System.currentTimeMillis();
 
 
-//						// If double click...
-//						if (pressTime - lastPressTime <= 300) {
+						// If double click...
+						if (pressTime - lastPressTime <= 300) {
 //							createNotification();
 //							ServiceFloating.this.stopSelf();
 //							mHasDoubleClicked = true;
-//						}
-//						else {     // If not double click....
-//							mHasDoubleClicked = false;
-//						}
+							_enable = true;
+							
+							//				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+							//				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP|Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+							//				getApplicationContext().startActivity(intent);
+							
+							if(_enable && flag_long_click) {
+								policyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+								adminComponent = new ComponentName(getApplicationContext(), PermissionReceiver.class);
+								if (policyManager.isAdminActive(adminComponent)) {
+									lockScreen(policyManager);
+									flag_long_click = false;
+								} else {
+									//Toast.makeText(this, "You must enable this app in device admin by open Lock Screen and click ENABLE button!", Toast.LENGTH_SHORT).show();
+								}
+							}
+						}
+						else {     // If not double click....
+						//	mHasDoubleClicked = false;
+						}
 						lastPressTime = pressTime; 
 						initialX = paramsF.x;
 						initialY = paramsF.y;
@@ -161,7 +180,6 @@ public class ServiceFloating extends Service {
 				}
 			});
 		} catch (Exception e) {
-			// TODO: handle exception
 		}
 
 		chatHead.setOnLongClickListener(new OnLongClickListener() {
@@ -177,28 +195,12 @@ public class ServiceFloating extends Service {
 		});
 		chatHead.setOnClickListener(new View.OnClickListener() {
 
-			private DevicePolicyManager policyManager;
-			private ComponentName adminComponent;
+		
 
 			@Override
 			public void onClick(View arg0) {
 				//initiatePopupWindow(chatHead); show list app menu
-				_enable = true;
-				
-				//				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-				//				intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK|Intent.FLAG_ACTIVITY_SINGLE_TOP|Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
-				//				getApplicationContext().startActivity(intent);
-				
-				if(_enable && flag_long_click) {
-					policyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
-					adminComponent = new ComponentName(getApplicationContext(), PermissionReceiver.class);
-					if (policyManager.isAdminActive(adminComponent)) {
-						lockScreen(policyManager);
-						flag_long_click = false;
-					} else {
-						//Toast.makeText(this, "You must enable this app in device admin by open Lock Screen and click ENABLE button!", Toast.LENGTH_SHORT).show();
-					}
-				}
+			
 			}
 		});
 

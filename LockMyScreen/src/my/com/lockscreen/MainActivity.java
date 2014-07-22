@@ -88,7 +88,7 @@ public class MainActivity extends Activity {
 			public void onClick(View v) {
 				requestPermission(adminComponent);
 				//register turn off screen reciever
-				Toast.makeText(getBaseContext(), "Active successful", Toast.LENGTH_SHORT).show();
+				//Toast.makeText(getBaseContext(), "Active successful", Toast.LENGTH_SHORT).show();
 				
 				
 			}

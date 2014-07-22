@@ -34,7 +34,9 @@ public class SpanFive extends Fragment{
 				startActivity(intent);
 				SharedPreferences.Editor editor = prefs.edit();
 				editor.putBoolean("first_time", true);
-				editor.commit();			}
+				editor.commit();		
+				getActivity().finish();
+			}
 		});
 		
 		return five;

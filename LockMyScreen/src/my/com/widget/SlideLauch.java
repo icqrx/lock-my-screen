@@ -54,6 +54,7 @@ public class SlideLauch extends FragmentActivity{
 
     		ViewPager pager = (ViewPager) super.findViewById(R.id.viewpager);
     		pager.setAdapter(this.mPagerAdapter);
+    		
 
         }
         
