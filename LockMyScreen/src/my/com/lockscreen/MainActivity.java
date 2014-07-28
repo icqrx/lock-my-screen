@@ -38,11 +38,13 @@ public class MainActivity extends Activity {
 	private TextView txt_3;
 	private TextView txt_4;
 	private TextView txt_5;
+	private TextView txt_6;
 	private Button btn_start_floating;
 	private Button btn_stop_floating;
 	private Button btn_active;
 	private Button btn_deactive;
 	private Button btn_shortcut;
+	private Button btn_pick_color;
 	private ComponentName adminComponent;
 	private TurnOffScreenReciever turnOffScreenReciever;
 	private DevicePolicyManager policyManager;
@@ -60,18 +62,20 @@ public class MainActivity extends Activity {
 		txt_3 = (TextView)findViewById(R.id.textView3);
 		txt_3.setText(Html.fromHtml("Create a" + "<b>" + " SHORTCUT" + "</b>" + " on home screen"));
 		
-		txt_4 = (TextView)findViewById(R.id.textView4);
-		txt_4.setText(Html.fromHtml("Create a" + "<b>" + " FLOATING BUTTON" + "</b>" + " anywhere"));
+		//txt_4 = (TextView)findViewById(R.id.textView4);
+		//txt_4.setText(Html.fromHtml("Create a" + "<b>" + " FLOATING BUTTON" + "</b>" + " anywhere"));
 		
-		txt_5 = (TextView)findViewById(R.id.textView5);
-		txt_5.setText(Html.fromHtml("Stop" + "<b>" + " FLOATING BUTTON" + "</b>"));
-		
+//		txt_5 = (TextView)findViewById(R.id.textView5);
+//		txt_5.setText(Html.fromHtml("Stop" + "<b>" + " FLOATING BUTTON" + "</b>"));
+		txt_6 = (TextView)findViewById(R.id.textView6);
+		txt_6.setText(Html.fromHtml("Change conf" + "<b>" + " FLOATING BUTTON" + "</b>"));
 				
 		btn_active = (Button)findViewById(R.id.btn_active);
 		btn_deactive = (Button)findViewById(R.id.btn_deactive);
 		btn_shortcut = (Button)findViewById(R.id.btn_create_shortcut);
-		btn_start_floating = (Button)findViewById(R.id.btn_floating);
-		btn_stop_floating = (Button)findViewById(R.id.btn_stop_floating);
+		//btn_start_floating = (Button)findViewById(R.id.btn_floating);
+		//btn_stop_floating = (Button)findViewById(R.id.btn_stop_floating);
+		btn_pick_color = (Button)findViewById(R.id.btn_pick_color);
 		
 		adminComponent = new ComponentName(MainActivity.this,PermissionReceiver.class);
 		policyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
@@ -82,6 +86,13 @@ public class MainActivity extends Activity {
 			btn_deactive.setEnabled(true);
 		}
 		
+		btn_pick_color.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				startActivity(new Intent(getBaseContext(),PickColorActivity.class));
+			}
+		});
 		btn_active.setOnClickListener(new View.OnClickListener() {
 			
 			@Override
@@ -126,20 +137,20 @@ public class MainActivity extends Activity {
 		if(bundle != null && bundle.getString("LAUNCH").equals("YES")) {
 			startService(new Intent(MainActivity.this, ServiceFloating.class));
 		}
-		btn_start_floating.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				startService(new Intent(MainActivity.this, ServiceFloating.class));
-			}
-		});
-		btn_stop_floating.setOnClickListener(new View.OnClickListener() {
-			
-			@Override
-			public void onClick(View v) {
-				stopService(new Intent(MainActivity.this, ServiceFloating.class));
-			}
-		});
+//		btn_start_floating.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				startService(new Intent(MainActivity.this, ServiceFloating.class));
+//			}
+//		});
+//		btn_stop_floating.setOnClickListener(new View.OnClickListener() {
+//			
+//			@Override
+//			public void onClick(View v) {
+//				stopService(new Intent(MainActivity.this, ServiceFloating.class));
+//			}
+//		});
 //		turnOffScreenReciever = new TurnOffScreenReciever();
 //		registerReceiver(turnOffScreenReciever, new IntentFilter(MyWidgetProvider.WIDGET_BUTTON));	
 		

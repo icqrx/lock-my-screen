@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import my.com.R;
 import my.com.lockscreen.MainActivity;
 import my.com.lockscreen.MainActivity.PermissionReceiver;
+import my.com.manager.Common;
 import my.com.manager.PInfo;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
@@ -20,6 +21,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
+import android.graphics.PorterDuffColorFilter;
+import android.graphics.PorterDuff.Mode;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
 import android.os.IBinder;
@@ -57,12 +61,12 @@ public class ServiceFloating extends Service {
 	ArrayList<String> myArray;
 	ArrayList<PInfo> apps;
 	//List listCity;
-
+	private int pick_color;
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
 	}
-
+	
 	@Override 
 	public void onCreate() {
 		super.onCreate();
@@ -81,12 +85,15 @@ public class ServiceFloating extends Service {
 //		for(int i=0 ; i<apps.size() ; ++i) {
 //			listCity.add(apps.get(i));
 //		}
-
 		windowManager = (WindowManager) getSystemService(WINDOW_SERVICE);
 
 		chatHead = new ImageView(this);
 		
 		chatHead.setImageResource(R.drawable.floating2);
+		int color = Common.getColor(getApplicationContext());
+		Drawable draw = chatHead.getDrawable();
+		draw.setColorFilter(new PorterDuffColorFilter(color, Mode.MULTIPLY));
+		chatHead.setImageDrawable(draw);
 		
 		if(prefs.getString("ICON", "floating2").equals("floating3")){
 			chatHead.setImageResource(R.drawable.floating3);

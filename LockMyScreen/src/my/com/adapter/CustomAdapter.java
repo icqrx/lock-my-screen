@@ -43,7 +43,7 @@ public class CustomAdapter extends ArrayAdapter{
         TextView txtName = (TextView) convertView.findViewById(R.id.textView1);
         txtName.setText(app.appname);
 
-        ImageView imageCity = (ImageView) convertView.findViewById(R.id.imageView1);
+        ImageView imageCity = (ImageView) convertView.findViewById(R.id.imageView_floating);
         imageCity.setImageDrawable(app.icon);
         return convertView;
     }

@@ -34,6 +34,7 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity android:name="my.com.lockscreen.PickColorActivity"></activity>
         <activity
             android:name="my.com.lockscreen.ShortcutActivity"
             android:launchMode="singleInstance" 

@@ -18,4 +18,15 @@ public class Common {
 	    Boolean aToken = app_preferences.getBoolean("flag_longclick", true);
 	    return aToken;
 	}
+	public static void setColor (Context context, int flag) {
+		SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(context);
+		android.content.SharedPreferences.Editor editor = app_preferences.edit();
+		editor.putInt("color",flag);
+		editor.commit();
+	}
+	public static int getColor(Context context) {
+	    SharedPreferences app_preferences = PreferenceManager.getDefaultSharedPreferences(context);
+	    int aToken = app_preferences.getInt("color", 0);
+	    return aToken;
+	}
 }
