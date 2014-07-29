@@ -1,4 +1,4 @@
-package my.com.service;
+package my.app.khu.service;
 
 import android.app.Activity;
 import android.content.ComponentName;

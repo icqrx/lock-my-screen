@@ -1,6 +1,6 @@
-package my.com.lockscreen;
+package my.app.khu.lockscreen;
 
-import my.com.lockscreen.MainActivity.PermissionReceiver;
+import my.app.khu.lockscreen.MainActivity.PermissionReceiver;
 import android.app.Activity;
 import android.app.admin.DevicePolicyManager;
 import android.content.ComponentName;

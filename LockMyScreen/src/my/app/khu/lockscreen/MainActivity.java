@@ -1,8 +1,8 @@
-package my.com.lockscreen;
+package my.app.khu.lockscreen;
 
-import my.com.R;
-import my.com.service.ServiceFloating;
-import my.com.widget.MyWidgetProvider;
+import my.app.khu.service.ServiceFloating;
+import my.app.khu.widget.MyWidgetProvider;
+import my.app.khu.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;

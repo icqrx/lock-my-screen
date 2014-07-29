@@ -1,6 +1,6 @@
-package my.com.widget;
+package my.app.khu.widget;
 
-import my.com.R;
+import my.app.khu.R;
 import android.app.PendingIntent;
 import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;

@@ -1,10 +1,10 @@
-package my.com.adapter;
+package my.app.khu.adapter;
 
 
 import java.util.List;
 
-import my.com.R;
-import my.com.manager.PInfo;
+import my.app.khu.R;
+import my.app.khu.manager.PInfo;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;

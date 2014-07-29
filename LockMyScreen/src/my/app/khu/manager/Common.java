@@ -1,4 +1,4 @@
-package my.com.manager;
+package my.app.khu.manager;
 
 import android.content.Context;
 import android.content.SharedPreferences;

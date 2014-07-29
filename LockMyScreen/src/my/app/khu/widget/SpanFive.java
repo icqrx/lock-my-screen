@@ -1,8 +1,8 @@
-package my.com.widget;
+package my.app.khu.widget;
 
 
-import my.com.R;
-import my.com.lockscreen.MainActivity;
+import my.app.khu.R;
+import my.app.khu.lockscreen.MainActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;

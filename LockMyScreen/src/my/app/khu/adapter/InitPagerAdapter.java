@@ -1,4 +1,4 @@
-package my.com.adapter;
+package my.app.khu.adapter;
 
 
 

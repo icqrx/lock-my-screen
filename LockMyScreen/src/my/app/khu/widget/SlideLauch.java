@@ -1,11 +1,11 @@
-package my.com.widget;
+package my.app.khu.widget;
 
 import java.util.List;
 import java.util.Vector;
 
-import my.com.R;
-import my.com.adapter.InitPagerAdapter;
-import my.com.lockscreen.MainActivity;
+import my.app.khu.R;
+import my.app.khu.adapter.InitPagerAdapter;
+import my.app.khu.lockscreen.MainActivity;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.content.SharedPreferences;

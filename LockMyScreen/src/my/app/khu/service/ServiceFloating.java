@@ -1,13 +1,12 @@
-package my.com.service;
+package my.app.khu.service;
 
 
 import java.util.ArrayList;
 
-import my.com.R;
-import my.com.lockscreen.MainActivity;
-import my.com.lockscreen.MainActivity.PermissionReceiver;
-import my.com.manager.Common;
-import my.com.manager.PInfo;
+import my.app.khu.R;
+import my.app.khu.lockscreen.MainActivity.PermissionReceiver;
+import my.app.khu.manager.Common;
+import my.app.khu.manager.PInfo;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.Notification;
@@ -21,8 +20,8 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.PixelFormat;
-import android.graphics.PorterDuffColorFilter;
 import android.graphics.PorterDuff.Mode;
+import android.graphics.PorterDuffColorFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Handler;
@@ -33,7 +32,6 @@ import android.view.Display;
 import android.view.Gravity;
 import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnLongClickListener;
 import android.view.WindowManager;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
@@ -57,11 +55,9 @@ public class ServiceFloating extends Service {
 	long lastPressTime;
 	private Boolean _enable = true;
 	private Boolean flag_long_click = false;
-	private Boolean up_action_flag = false;
 	ArrayList<String> myArray;
 	ArrayList<PInfo> apps;
 	//List listCity;
-	private int pick_color;
 	@Override
 	public IBinder onBind(Intent intent) {
 		return null;
@@ -189,17 +185,17 @@ public class ServiceFloating extends Service {
 		} catch (Exception e) {
 		}
 
-		chatHead.setOnLongClickListener(new OnLongClickListener() {
-			
-			@Override
-			public boolean onLongClick(View v) {
-				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-				startActivity(intent);
-				flag_long_click = false;
-				return false;
-			}
-		});
+//		chatHead.setOnLongClickListener(new OnLongClickListener() {
+//			
+//			@Override
+//			public boolean onLongClick(View v) {
+//				Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//				startActivity(intent);
+//				flag_long_click = false;
+//				return false;
+//			}
+//		});
 		chatHead.setOnClickListener(new View.OnClickListener() {
 
 		
