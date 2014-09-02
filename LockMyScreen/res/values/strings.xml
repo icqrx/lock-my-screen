@@ -8,6 +8,7 @@
     <string name="request_permission_explanation">    Remember that you can only uninstall this app after you disabled the device administrator permission.</string>
     <string name="on_permission_disabled">The application can now be uninstalled.</string>
     <string name="action_settings">Settings</string>
+    <string name="ad_unit_id">ca-app-pub-5505316336532731/3976502806</string>
     <string name="hello_world">Hello world!</string>
     <string name="title_activity_configurations">Configurations</string>
 </resources>

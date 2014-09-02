@@ -1,8 +1,8 @@
 package my.app.khu.lockscreen;
 
+import my.app.khu.R;
 import my.app.khu.service.ServiceFloating;
 import my.app.khu.widget.MyWidgetProvider;
-import my.app.khu.R;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -26,6 +26,9 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+
 public class MainActivity extends Activity {
 
 	private static final int MAX_RETRY_COUNT = 4;
@@ -45,6 +48,7 @@ public class MainActivity extends Activity {
 	private Button btn_deactive;
 	private Button btn_shortcut;
 	private Button btn_pick_color;
+	private AdView mAdView;
 	private ComponentName adminComponent;
 	private TurnOffScreenReciever turnOffScreenReciever;
 	private DevicePolicyManager policyManager;
@@ -79,6 +83,12 @@ public class MainActivity extends Activity {
 		
 		adminComponent = new ComponentName(MainActivity.this,PermissionReceiver.class);
 		policyManager = (DevicePolicyManager) getSystemService(Context.DEVICE_POLICY_SERVICE);
+		
+		mAdView = (AdView) findViewById(R.id.adView);
+		AdRequest adRequest = new AdRequest.Builder().build();
+
+		//Load the adView with the ad request.
+		mAdView.loadAd(adRequest);
 		
 		if (policyManager.isAdminActive(adminComponent)) {
 			//lockScreen(policyManager);
@@ -122,7 +132,7 @@ public class MainActivity extends Activity {
 
 				Intent addIntent = new Intent();
 				addIntent.putExtra(Intent.EXTRA_SHORTCUT_INTENT, shortcutIntent);
-				addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME,"Lock Screen");
+				addIntent.putExtra(Intent.EXTRA_SHORTCUT_NAME, "Lock Screen");
 				addIntent.putExtra(Intent.EXTRA_SHORTCUT_ICON_RESOURCE, Intent.ShortcutIconResource.fromContext(getApplicationContext(),R.drawable.icon));
 
 				addIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
@@ -165,6 +175,7 @@ public class MainActivity extends Activity {
 	}
 	@Override
 	protected void onResume() {
+		mAdView.pause();
 		Bundle bundle = getIntent().getExtras();
 
 		if(bundle != null && bundle.getString("LAUNCH").equals("YES")) {
@@ -175,8 +186,13 @@ public class MainActivity extends Activity {
 	@Override
 	protected void onDestroy() {
 		super.onDestroy();
+		mAdView.destroy();
 	}
-
+	@Override
+	protected void onPause() {
+		mAdView.pause();
+		super.onPause();
+	}
 	@Override
 	protected void onActivityResult(int aRequestCode, int aResultCode, Intent aData ) {
 		super.onActivityResult(aRequestCode, aResultCode, aData);
